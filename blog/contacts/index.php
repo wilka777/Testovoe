@@ -1,9 +1,0 @@
-<?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Контакты");
-?><?$APPLICATION->IncludeComponent(
-	"bitrix:form.result.new",
-	"",
-Array(),
-false
-);?><br><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
