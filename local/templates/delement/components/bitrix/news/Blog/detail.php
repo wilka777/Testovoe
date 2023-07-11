@@ -18,7 +18,7 @@ $this->setFrameMode(true);
 
 $ElementID = $APPLICATION->IncludeComponent(
 	"bitrix:news.detail",
-	"",
+	"BlogDetail",
 	[
 		"DISPLAY_DATE" => $arParams["DISPLAY_DATE"],
 		"DISPLAY_NAME" => $arParams["DISPLAY_NAME"],
@@ -72,7 +72,24 @@ $ElementID = $APPLICATION->IncludeComponent(
 	$component,
 	['HIDE_ICONS' => 'Y']
 );?>
+
+    <footer class="post-layout__footer">
+        <div class="blog-bottom">
+            <div class="blog-bottom__aux">
+                <a class="back-list-article link-with-arrow link-with-arrow--back" href="<?=$arResult["FOLDER"].$arResult["URL_TEMPLATES"]["news"]?>">Вернуться
+                    к
+                    списку
+                    статей</a>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
 <p><a href="<?=$arResult["FOLDER"].$arResult["URL_TEMPLATES"]["news"]?>"><?=GetMessage("T_NEWS_DETAIL_BACK")?></a></p>
+
 <?if($arParams["USE_RATING"]=="Y" && $ElementID):?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:iblock.vote",
@@ -172,5 +189,5 @@ $ElementID = $APPLICATION->IncludeComponent(
 	],
 	$component,
 	['HIDE_ICONS' => 'Y']
-); echo 'PENIS';?>
+); ?>
 <?endif;

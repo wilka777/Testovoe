@@ -14,6 +14,12 @@ $this->setFrameMode(true);
 $APPLICATION->SetPageProperty("PAGE_CLASS", 'page-article page-article--new');
 $resElement = CIBlockElement::GetByID($arResult['ID'])->GetNext();
 
+if (iconv_strlen($arResult['NAME']) < 30) {
+    $APPLICATION->SetPageProperty("mytitle", $arResult['NAME']." - ".$arResult['PROPERTIES']['author']['VALUE'].", ". strstr($arResult['DATE_ACTIVE_FROM'], ' ', true));
+} else {
+    $APPLICATION->SetPageProperty("mytitle", $arResult['NAME']);
+}
+
 ?>
 
     <section class="section page--post page--post-new">
@@ -55,7 +61,7 @@ $resElement = CIBlockElement::GetByID($arResult['ID'])->GetNext();
 
                     <div class="post-layout__content">
                         <!-- Заголовок Статьи -->
-                        <?= $arResult['PROPERTIES']['detail_taitle']['~VALUE']['TEXT']; ?>
+                        <h2><?= $arResult['NAME']; ?></h2>
                         <!-- Заголовок Статьи -->
 
                         <!-- Основной контент на странице-->
@@ -209,7 +215,7 @@ $resElement = CIBlockElement::GetByID($arResult['ID'])->GetNext();
 <?php
 
 echo '<pre>';
-//print_r($arResult);
+
 //echo print_r($arResult['DETAIL_TEXT']);
 echo '</pre>';
 ?>
